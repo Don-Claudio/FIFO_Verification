@@ -4,4 +4,5 @@ package fifo_pkg;
     `include "fifo_driver.sv"
     `include "fifo_mon_txn.sv"
     `include "fifo_monitor.sv"
+    `include "fifo_scoreboard.sv"
 endpackage : fifo_pkg
