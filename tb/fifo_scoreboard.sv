@@ -22,7 +22,7 @@ class fifo_scoreboard #(parameter WIDTH = 16);
             expected_q.push_back(mon_txn.din);
         end
         if (mon_txn.r_enb && !mon_txn.empty) begin
-            expected_q.pop_front(expected_data);
+            expected_data = expected_q.pop_front();
             assert (expected_data === mon_txn.dout) else
             $error ("Mismatch: expected %0h, got %0h", expected_data, mon_txn.dout);
         end
