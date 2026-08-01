@@ -18,9 +18,9 @@ class fifo_monitor #(parameter WIDTH = 16);
         mon_txn = new();
 
         mon_txn.reset = vif.reset;
-        mon_txn.w_enb = vif.cb.w_enb;
-        mon_txn.r_enb = vif.cb.r_enb;
-        mon_txn.din = vif.cb.din;
+        mon_txn.w_enb = vif.w_enb;
+        mon_txn.r_enb = vif.r_enb;
+        mon_txn.din = vif.din;
         mon_txn.dout = vif.cb.dout;
         mon_txn.full =  vif.cb.full;
         mon_txn.empty = vif.cb.empty;

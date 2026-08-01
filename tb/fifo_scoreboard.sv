@@ -10,21 +10,28 @@ class fifo_scoreboard #(parameter WIDTH = 16);
   task run();
     fifo_mon_txn#(WIDTH) mon_txn;
     logic [WIDTH-1:0]    expected_data;
+    bit                  read_pending = 0;
 
     forever begin
       mon2scb.get(mon_txn);
 
+      if (read_pending) begin
+        assert (expected_data === mon_txn.dout) else
+          $error("Mismatch: expected %0h, got %0h", expected_data, mon_txn.dout);
+        read_pending = 0;
+      end
+
       if (mon_txn.reset) begin
         expected_q.delete();
-      end 
-      else begin
+        read_pending = 0;   
+                             
+      end else begin
         if (mon_txn.w_enb && !mon_txn.full) begin
-            expected_q.push_back(mon_txn.din);
+          expected_q.push_back(mon_txn.din);
         end
         if (mon_txn.r_enb && !mon_txn.empty) begin
-            expected_data = expected_q.pop_front();
-            assert (expected_data === mon_txn.dout) else
-            $error ("Mismatch: expected %0h, got %0h", expected_data, mon_txn.dout);
+          expected_data = expected_q.pop_front(); 
+          read_pending = 1;                        
         end
       end
     end
