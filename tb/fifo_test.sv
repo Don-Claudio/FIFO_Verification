@@ -1,8 +1,8 @@
-class fifo_test #(parameter WIDTH = 16);
+class fifo_test #(parameter WIDTH = 16, parameter DEPTH = 8);
 
     int num_transactions;
     virtual fifo_if#(WIDTH) vif;
-    fifo_env#(WIDTH) env;
+    fifo_env#(WIDTH,DEPTH) env;
 
     function new(virtual fifo_if#(WIDTH) vif, int num_transactions);
     this.vif = vif;

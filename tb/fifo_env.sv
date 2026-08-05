@@ -1,4 +1,4 @@
-class fifo_env #(parameter WIDTH = 16);
+class fifo_env #(parameter WIDTH = 16, parameter DEPTH = 8);
 
   virtual fifo_if#(WIDTH) vif;
 
@@ -8,7 +8,7 @@ class fifo_env #(parameter WIDTH = 16);
 
   fifo_generator#(WIDTH)  gen;
   fifo_driver#(WIDTH)     drv;
-  fifo_monitor#(WIDTH)    mon;
+  fifo_monitor#(WIDTH, DEPTH)    mon;
   fifo_scoreboard#(WIDTH) scb;
 
   function new(virtual fifo_if#(WIDTH) vif, int num_transactions);

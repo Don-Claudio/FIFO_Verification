@@ -3,6 +3,7 @@ module fifo_tb_top;
   import fifo_pkg::*;
 
   localparam WIDTH = 16;
+  localparam DEPTH = 8;
 
   logic clk;
 
@@ -24,7 +25,7 @@ module fifo_tb_top;
     .empty (vif_inst.empty)
   );
 
-  fifo_test#(WIDTH) test;
+  fifo_test#(WIDTH, DEPTH) test;
 
   initial begin
     test = new(vif_inst, 200);
