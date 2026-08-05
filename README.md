@@ -9,9 +9,9 @@ testbench).
 
 - [x] Design specification
 - [x] Verification plan
-- [ ] Coverage model
-- [ ] Testbench (driver / monitor / scoreboard / coverage)
-- [ ] Simulation results
+- [ ] Functional coverage (covergroups matching coverage_model.md)
+- [x] Testbench (driver / monitor / scoreboard / coverage)
+- [x] First clean simulation run (0 mismatches, 200 transactions)
 - [ ] Lint / CI
 
 ## Structure
