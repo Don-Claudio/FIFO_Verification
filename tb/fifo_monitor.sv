@@ -31,15 +31,15 @@ class fifo_monitor #(parameter WIDTH = 16, parameter DEPTH = 8);
     cx_ops : cross cp_w_enb, cp_r_enb;
 
     cx_write_at_extreme : cross cp_occupancy, cp_w_enb {
+      option.auto_bin_max = 0;
       bins full_write  = binsof(cp_occupancy.full)  && binsof(cp_w_enb) intersect {1};
       bins one_write   = binsof(cp_occupancy.one)   && binsof(cp_w_enb) intersect {1};
-      ignore_bins rest = default;
     }
 
     cx_read_at_extreme : cross cp_occupancy, cp_r_enb {
+      option.auto_bin_max = 0;
       bins empty_read     = binsof(cp_occupancy.empty)     && binsof(cp_r_enb) intersect {1};
       bins near_full_read = binsof(cp_occupancy.near_full) && binsof(cp_r_enb) intersect {1};
-      ignore_bins rest    = default;
     }
   endgroup
 
