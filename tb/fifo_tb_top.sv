@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module fifo_tb_top;
 
   import fifo_pkg::*;

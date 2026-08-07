@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 package fifo_pkg;
     `include "fifo_transaction.sv"
     `include "fifo_generator.sv"

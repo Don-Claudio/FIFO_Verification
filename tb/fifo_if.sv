@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 interface fifo_if #(parameter WIDTH = 16) (input logic clk);
 
   logic             reset;
