@@ -85,6 +85,9 @@ class fifo_monitor #(parameter WIDTH = 16, parameter DEPTH = 8);
     forever begin
         @(vif.cb);
 
+        #0;   // let this cycle's clockvar-driven outputs (w_enb/r_enb/din) settle onto the raw signals before reading them
+
+
         mon_txn = new();
 
         mon_txn.reset = vif.reset;
