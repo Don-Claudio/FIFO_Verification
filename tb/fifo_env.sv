@@ -28,6 +28,11 @@ class fifo_env #(parameter WIDTH = 16, parameter DEPTH = 8);
   task run();
     drv.reset_dut();
 
+    drv.run_write_streak_test();   // sequential — drv is not yet in the forever loop
+    drv.run_read_streak_test();
+    drv.run_mid_cycle_reset_test();
+    drv.run_mid_transfer_reset_test();
+
     fork
       gen.run();
       drv.run();
