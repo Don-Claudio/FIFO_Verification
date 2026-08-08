@@ -98,8 +98,6 @@ class fifo_monitor #(parameter WIDTH = 16, parameter DEPTH = 8);
         mon_txn.full =  vif.cb.full;
         mon_txn.empty = vif.cb.empty;
 
-        mon2scb.put(mon_txn);
-
         accepted_write = mon_txn.w_enb && !mon_txn.full;
         accepted_read  = mon_txn.r_enb && !mon_txn.empty;
 
